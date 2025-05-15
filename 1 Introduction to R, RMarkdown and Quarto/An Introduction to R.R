@@ -149,7 +149,17 @@ View(mymatrix)
 mymatrix[3, 2] # 3rd row 2nd column
 mymatrix[3, ] # 3rd row
 
+mymatrix[1:2, 3:5]
 
 
+# # LISTS: Indexing
+
+list(a = 1, b = 2, c = "Pen")
+mylist <- list(a = 1, b = 2, c = "Pen")
+
+mylist$c
+mylist[2]
+mylist[3]
+mylist[[3]]
 
 
