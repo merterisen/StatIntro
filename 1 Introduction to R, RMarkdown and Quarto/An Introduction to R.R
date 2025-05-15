@@ -72,21 +72,82 @@ sum(TRUE, FALSE)
 
 TRUE && FALSE
 TRUE || FALSE
+TRUE | FALSE
+
+a <- c(1, 2, 3, 4, NA)
+b <- c(1, 2, 3, 4, 5, 6)
+
+a %in% b
+
+?plot
+help(plot)
+
+?log
+help(log)
+
+typeof('x')
+typeof('Name')
+typeof('5')
+typeof(5)
+
+class(5)
+class('Name')
+
+Y <- 5
+Y <- as.character(Y)
+Y # '5'
+Y <- as.numeric(Y)
+Y # 5
+
+
+
+myvector <- c(11, 21, 31, 41, 51)
+myvector - mean(myvector)
+
+myvector[1]
+myvector[c(1, 2, 3)]
+myvector[1:3]
+myvector[c(1:3)]
+
+myvector[-1]
+myvector[-2]
+myvector[-3]
+myvector[-c(1:3)]
+
+myvector[c(T, F, TRUE, FALSE)]
 
 
 
 
+seq(from = 5, to = -5, by = -0.5)
+
+seq5 <- seq(from = 5, to = -5, by = -0.5)
+seq1 <- seq(5, -5, -0.5)
+
+identical(seq5, seq1)
+
+rep(seq1, times=5)
+
+as.character(seq1)
+
+plot(seq1)
 
 
 
 
+### MATRICES
 
+?matrix
 
+as.matrix(seq1)
 
+matrix(seq1, nrow=3)
+mymatrix <- matrix(seq1, nrow=3)
 
+View(mymatrix)
 
-
-
+mymatrix[3, 2] # 3rd row 2nd column
+mymatrix[3, ] # 3rd row
 
 
 
