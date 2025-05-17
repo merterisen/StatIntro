@@ -1,5 +1,8 @@
 #Install and load contributed packages:
-#install.packages("dplyr")                     #just once (unless you update R)
+#install.packages("dplyr")  #just once (unless you update R)
+#install.packages("readxl")
+#install.packages("haven")
+#install.packages("psych")
 #update.packages()                           #occasionally, to get the latest package updates
 
 # load the necessary packages
@@ -162,4 +165,83 @@ mylist[2]
 mylist[3]
 mylist[[3]]
 
+
+# DATA FRAME
+
+data.frame(stress=1:3, happiness=3:1, z=letters[24:26])
+df <- data.frame(stress=1:3, happiness=3:1, z=letters[24:26])
+View(df)
+
+df[, c(1,3)] #  Integer subsetting (matrix)
+df[c(1,3)] # Integer subsetting (list)
+
+
+df[, c('stress', 'z')]
+
+df2 <- df[1:2, c(1,3)]
+df2
+
+# Selecting rows
+df[c(1,3), ] # Returns rows 1 and 3
+df[,c(1, 3)] # Returns *columns* 1 and 3
+
+df[['stress']]
+df$stress
+
+df$sadness <- 3:5
+df
+
+df$confusion <- df$happiness * df$sadness
+df
+
+rowMeans(df[c("stress", "happiness", "sadness", "confusion")])
+
+
+####################### Functions ############
+
+summation <- function(a, b){
+  a <- sum(as.numeric(a))
+  b <- sum(as.numeric(b))
+  a+b
+}
+
+summation(7, 4)
+summation('7', '4')
+summation((1:3), (2:8))
+
+
+
+########################### for loops and if else conditionals ###
+
+
+for (x in (1:5)) {
+  logv <- log(x)
+  print(logv + 6)
+}
+
+
+for (i in (2:5)) {
+  if (i>3) {
+    print(i - 2)
+  }
+  else {
+    print(i)
+  }
+}
+
+
+for (i in (1:10)){
+  if (i > 3){
+    print(i - 2)
+  }
+  else if (i==3){
+    print(i + 2)
+  }
+  else if (i==2){
+    print(i*2)
+  }
+  else {
+    print(i*10)
+  }
+}
 
