@@ -24,13 +24,38 @@ library(dplyr)
 ```{r}
 data <- read_excel("C:\\Users\\MERT\\Documents\\Intro to Statistics with R\\0 Allgemeines\\Soscisurvey Data.xlsx")
 
+View(data)
+
+data <- data %>% dplyr::select(AI01_01:WE01_17)
+data <- data[c(-1), ]
+
+# data <- data[, -c(1:4, 43:54)]
 
 ```
 
 
 -- Now that you have cleaned the dataset, we know which items we have in the dataset. Please be reminded from the classes that the items AI01_01, AI01_02, ... AI01_04 measure AI attitude, AI02_01, AI02_02,and AI02_03 intensions to use AI and finally, OW01_01, OW01_02,OW01_03 ... OW01_05 measure ownership of the work. What I want you here is to change the column names to more understandable ones. Use the following names for renaming: for AI Attitude: AIAttitude_1:AIAttitude_4; for AI usage intensions: AIusage_1:AIusage_7; for ownership of the work done: Ownership_1:Ownership_5. 
 
+```{r}
+names(data)[1:4] <- paste('AIattitude', sep='_', 1:4)
+names(data)[5:7] <- paste('AIusage', sep = '_', 1:3)
+names(data)[8:12] <- paste('Ownership', sep='_', 1:5)
+
+View(data)
+
+```
+
 -- I want you, here, to store the items corresponding to different constructs in different datasets (i.e. for AI Attitude, AI usage intensions, and ownership of the work). These datasets should not include anything other than the items for a specific construct. After doing so, I want you to check the descriptive statistics of these scales. Check if there is any item that has a low mean and if so, you might checked if it is a reverse coded (i.e., negatively worded item) and if so, you can (for now) exclude that item from the main dataset (if there are any).
+
+```{r}
+AIattitude <- data %>% select(starts_with('AIattitude'))
+AIusage <- data %>% select(starts_with('AIusage'))
+Ownership <- data %>% select(starts_with('Ownership'))
+
+sapply(AIattitude, function(x){mean(x, na.rm=T)})
+sapply(AIusage, function(x){mean(x, na.rm=T)})
+sapply(Ownership, function(x){mean(x, na.rm=T)})
+```
 
 -- Using sapply package I want you to detect if there are any missing values across all of the items.
 
