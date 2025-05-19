@@ -1,0 +1,61 @@
+---
+title: "Exercise"
+output: html_document
+---
+
+## Description of the Exercises
+
+I want you to work with ggplot and plotly package for data visualization to gain some experience in the package as I think package could be very handy for you guys to create 'beautiful' plots. In the following we will first of all get the data.
+
+-- get all of the libraries needed
+
+```{r error=FALSE, warning=FALSE, eval=FALSE}
+library(plotly)
+library(ggplot2)
+library(dplyr)
+```
+
+-- get the data in your R environment
+
+## Data Cleaning, Processing and Exploration
+
+-- I want you to check the data and see that some columns (e.g., the first four columns and some columns at the end of the dataset) are not needed to be kept in our dataset as they are not related to the constructs that we wanted to measure. The only columns we are interested in are AI01_01, AI01_02 ... WE01_17 Exclude all of the other columns from the dataset and keep only the column names specified above in the dataset.
+
+```{r}
+data <- read_excel("C:\\Users\\MERT\\Documents\\Intro to Statistics with R\\0 Allgemeines\\Soscisurvey Data.xlsx")
+
+
+```
+
+
+-- Now that you have cleaned the dataset, we know which items we have in the dataset. Please be reminded from the classes that the items AI01_01, AI01_02, ... AI01_04 measure AI attitude, AI02_01, AI02_02,and AI02_03 intensions to use AI and finally, OW01_01, OW01_02,OW01_03 ... OW01_05 measure ownership of the work. What I want you here is to change the column names to more understandable ones. Use the following names for renaming: for AI Attitude: AIAttitude_1:AIAttitude_4; for AI usage intensions: AIusage_1:AIusage_7; for ownership of the work done: Ownership_1:Ownership_5. 
+
+-- I want you, here, to store the items corresponding to different constructs in different datasets (i.e. for AI Attitude, AI usage intensions, and ownership of the work). These datasets should not include anything other than the items for a specific construct. After doing so, I want you to check the descriptive statistics of these scales. Check if there is any item that has a low mean and if so, you might checked if it is a reverse coded (i.e., negatively worded item) and if so, you can (for now) exclude that item from the main dataset (if there are any).
+
+-- Using sapply package I want you to detect if there are any missing values across all of the items.
+
+it seems there are some missing data in all of the items. It might be the case that some participants did not answer any of the items and could be excluded. Please check the data visually.  However, for the sake of this data, let us kick out the datapoints with missing values based on the first ownership of work item. 
+
+-- If there are no missing values, in the main dataset, take the mean of items that measure certain constructs and store the values in variables in accordance with construct names (e.g, AI Attitude (AIAttitude_1, AIAttitude_2 .... AIAttitude_4) items should be averaged and the result should be stored in a variable with a name like AIAttitude_Mean)
+
+-- Using piping function in dplyr package, create a pipe that starts from the data, groups the data by gender and using summarise take the mean, standard deviations, median, min and max values of AIAttitude_Mean and AIusage_Mean Store the results in a r object and inspect the results by opening it up. Compare the means and standard deviations across gender.
+
+---- also, you might consider writing the results from these into a .txt file on your working directory
+
+## Data Visualization
+
+-- Create a boxplot with Ownership_Mean on y-axis and gender set to color in plotly. Realize that there is only one box for gender but we were expecting two: one for each gender. Why could that be the reason? Think about how the gender data is? Is it numeric or something else? See what happens if transform gender variable into a factor variable and replot. Compare the differences.
+
+-- The gender variable includes 1s and 2s. Change 1s to Female and 2s to Male.
+
+-- Using the plot above, change the colors of the boxes to black for females and grey for males. Also, name the x-axis as "Gender" and y-axis as "Work Ownership".
+
+
+-- Using a scatterplot, check the relationship between Ownership_Mean and AIusage_Mean. AIusage_Mean should be plotted on y-axis and Ownership_Mean on x-axis. Also, add gender as a symbol variable so that the points are shown with separate shapes for males and females. Change the axis labels accordingly.
+
+
+-- Using help from ggplot package, for each gender add an lm() line to a scatterplot like the one above so that it shows the strength of the relationship between AIusage_Mean and Ownership_Mean differently for males and females.
+
+
+
+-- Create the relationship between AIusage_Mean and Ownership_Mean having gender variable as facet. That means, there will be different plots for different genders that show the relationship between the variables. You could get help from ggplot and/or use dplyr package for solving this problem. See, for example, <https://stackoverflow.com/questions/58103196/how-to-facet-a-plot-ly-chart>

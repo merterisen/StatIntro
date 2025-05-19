@@ -81,6 +81,8 @@ rm(data)
 ####################################################
 # Data manipulation using dyplr vs. base/indexing: #
 ####################################################
+library(dplyr)
+library(readxl)
 
 data <- read_excel("C:\\Users\\MERT\\Documents\\Intro to Statistics with R\\0 Allgemeines\\Soscisurvey Data.xlsx")
 
